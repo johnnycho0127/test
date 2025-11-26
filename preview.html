@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>INFO 300 Project Showcase - Preview</title>
+<style>
+    /* BASIC RESET & TYPOGRAPHY */
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background-color: #f8f9fa;
+        margin: 0;
+        padding: 0;
+        color: #333;
+    }
+
+    /* HEADER */
+    .showcase-header {
+        background-color: #fff;
+        padding: 3rem 2rem;
+        text-align: center;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 2rem;
+    }
+    .showcase-header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        color: #2c3e50;
+    }
+    .showcase-header p {
+        color: #666;
+        margin-top: 10px;
+        font-size: 1.1rem;
+    }
+
+    /* GRID LAYOUT */
+    .project-grid {
+        display: grid;
+        /* This creates the responsive columns (1 on mobile, 3 on desktop) */
+        grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem 4rem 2rem;
+    }
+
+    /* CARD DESIGN */
+    .project-card {
+        background: #ffffff;
+        border: 1px solid #e1e4e8;
+        border-radius: 10px;
+        overflow: hidden;
+        transition: transform 0.25s ease, box-shadow 0.25s ease;
+        display: flex;
+        flex-direction: column;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+
+    .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 24px rgba(0,0,0,0.15);
+        border-color: #d1d5da;
+    }
+
+    /* IMAGE PLACEHOLDER */
+    .card-image {
+        height: 160px;
+        background-color: #e9ecef;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #adb5bd;
+        font-weight: bold;
+        letter-spacing: 1px;
+    }
+
+    /* CARD CONTENT */
+    .card-content {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .method-tag {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: #007bff; /* Accent Blue */
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .project-card h3 {
+        margin: 0 0 0.5rem 0;
+        font-size: 1.3rem;
+        line-height: 1.3;
+        color: #2c3e50;
+    }
+
+    .hook {
+        color: #555;
+        font-size: 0.95rem;
+        margin: 0 0 1rem 0;
+        font-style: italic;
+        border-left: 3px solid #eee;
+        padding-left: 10px;
+    }
+
+    .problem {
+        font-size: 0.9rem;
+        color: #666;
+        margin-bottom: 1.5rem;
+        line-height: 1.6;
+        flex-grow: 1; /* Pushes the button to the bottom */
+    }
+
+    /* TAGS */
+    .tags {
+        margin-bottom: 1.25rem;
+    }
+    .tag {
+        display: inline-block;
+        background: #f1f3f5;
+        padding: 4px 8px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        color: #495057;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+
+    /* BUTTON */
+    .btn-read {
+        display: block;
+        text-align: center;
+        background: #2c3e50; /* Dark Slate */
+        color: white;
+        text-decoration: none;
+        padding: 0.8rem;
+        border-radius: 6px;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: background 0.2s;
+    }
+    .btn-read:hover {
+        background: #1a252f;
+    }
+
+</style>
+</head>
+<body>
+
+    <header class="showcase-header">
+        <h1>INFO 300 Research Showcase</h1>
+        <p>Featured Student Proposals | Fall 2025</p>
+    </header>
+
+    <div id="project-grid" class="project-grid">
+        </div>
+
+<script>
+    // DUMMY DATA (Usually this comes from your projects.json file)
+    const projects = [
+        {
+            title: "Algorithm Awareness in Gen Z",
+            hook: "Do users know when their feed is biased?",
+            problem: "Users trust algorithmic curation implicitly, yet little is known about how specific engines prioritize polarization over accuracy.",
+            method: "Mixed Methods Survey",
+            tags: ["HCI", "Social Media", "Ethics"],
+            link: "#"
+        },
+        {
+            title: "The Digital Divide in Public Libraries",
+            hook: "Access is not just about having a computer.",
+            problem: "Current library interfaces assume a level of digital literacy that excludes elderly patrons from essential government services.",
+            method: "Ethnographic Observation",
+            tags: ["Library Science", "Accessibility"],
+            link: "#"
+        },
+        {
+            title: "Gamification in Health Apps",
+            hook: "Why do fitness streaks fail?",
+            problem: "While gamification is popular, retention rates drop after 30 days. We explore the psychological fatigue caused by reward saturation.",
+            method: "Longitudinal User Study",
+            tags: ["Health Informatics", "UX Design"],
+            link: "#"
+        },
+        {
+            title: "AI Tutors in STEM Education",
+            hook: "Can a chatbot replace a TA?",
+            problem: "Undergraduate students in large lecture halls lack personalized support. We propose an LLM-based system to handle routine inquiries.",
+            method: "A/B Testing",
+            tags: ["EdTech", "AI", "Education"],
+            link: "#"
+        }
+    ];
+
+    const grid = document.getElementById('project-grid');
+
+    // Build the cards
+    projects.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'project-card';
+        
+        // Note: Image is a placeholder div for this preview
+        card.innerHTML = `
+            <div class="card-image">IMAGERY HERE</div>
+            <div class="card-content">
+                <span class="method-tag">${project.method}</span>
+                <h3>${project.title}</h3>
+                <p class="hook">"${project.hook}"</p>
+                <p class="problem">${project.problem}</p>
+                <div class="tags">
+                    ${project.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+                </div>
+                <a href="${project.link}" class="btn-read">View Proposal</a>
+            </div>
+        `;
+        grid.appendChild(card);
+    });
+</script>
+
+</body>
+</html>
